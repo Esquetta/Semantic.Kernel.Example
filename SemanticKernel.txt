@@ -1,0 +1,57 @@
+--Semantic Kernel Nedir?
+
+Microsoft tarafından sunulan ve özellikle .NET ekosisteminde Yapay Zeka (AI) uygulamaları geliştirmeyi kolaylaştırmayı hedefleyen açık kaynaklı bir kütüphanedir. Büyük Dil Modelleri (Large Language Models – LLM) ve yapay zekâ tabanlı yetenekleri ile yazılım dünyasının geleneksel iş akışlarını birleştirmeye yönelik çeşitli araçlar ve soyutlamalar sağlamaktadır. Bu minvalde, .NET uygulamalarında OpenAI, Azure OpenAI, DeepSeek vs. gibi büyük dil modeli servislerini entegre edebilecek bir ‘çerçeve’ veya ‘iskelet’ rolü görmektedir diyebiliriz.
+
+Semantic Kernel, .NET çalışmalarında AI destekli uygulamalar geliştirmek için özelleştirilebilir ve genişletilebilir bir yapı sunmaktadır. LLM’lerin çıktılarıyla geleneksel iş akışlarını birleştirebilir, iş mantıklarındaki kararları LLM destekli verebilir, geçmiş verileri hatırlayarak uygulamanın öğrenmesini ve konu bağlamının hatırlanmasını sağlayabilir, mevcut AI sistemlerini .NET yetenekleriyle genişletebilir ve kendimize uygun özelleştirerek ihtiyaçlarımıza AI destekli tam bir altyapı sağlayabiliriz.
+
+
+--Büyük Dil Modelleriyle Entegrasyon
+
+Semantic Kernel, OpenAI veya Azure OpenAI gibi servislerdeki büyük dil modelleri ile etkileşimi standart bir arayüz üzerinden sunmakta ve özellikle .NET uygulamalarında istemci çağrıları, kimlik doğrulama ve istemci yapılandırmaları gibi ayrıntıları kolaylıkla yöneterek LLM’lerden faydalanılmasını sağlamaktadır.
+
+
+--‘Plugins’ (Eklenti) ve ‘Functions’ (Fonksiyonlar)
+
+-Plugins
+
+Semantic Kernel’da belirli bir görevi yerine getiren modüler bileşene ‘Plugins’ denmektedir. Başka bir deyişle, LLM’lere çeşitli görevleri yaptırmak ve uygulamaya belirli yetenekler kazandırmak için tanımlanmış modüler yeteneklerdir.
+Teknik olarak birbiriyle ilişkili ‘fonksiyonlar’ grubudur.
+
+Plugin, bir dizi fonksiyonu içeren daha büyük bir yapıyken, function ise tek başına çalışan belirli bir göreve odaklı operatif çalışma sergileyen bir işlemdir.
+
+Örnek olarak;
+
+Matematik Plugin’i : İçinde toplama, çıkarma, çarpma vs. gibi fonksiyonları barındırır.
+Metin Analizi Plugin’i : İçinde duygu analizi, özetleme gibi işlemler yapan fonksiyonlar bulunur.
+Çeviri Plugin’i : Metinleri bir dilden diğerine çevirmek için fonksiyonlar içerir. “Türkçe’den İngilizce’ye çevir” ya da “İngilizce’den Türkçe’ye çevir” gibi farklı fonksiyonlar barındırabilir.
+
+
+-Function
+
+Function ise tek bir amacı ve belirli bir görevi gerçekleştirmeye odaklı olan bağımsız bir işlemdir. Genelde bir LLM çağrısı veya belirli bir iş mantığını yürütmekten sorumlu fonksiyondur.
+Bir plugin içerisinde bir veya birden fazla function bulunabilir. Yapısal olarak da function’lar; genellikle bir girdi almakta, iş mantığı doğrultusunda operatif işlem yapmakta ve bu işlem neticesinde bir çıktı üretmektedir.
+
+Örnek olarak;
+
+SummarizeText() : Bir metni özetleyen fonksiyondur.
+ExtractKeywords() : Metinden anahtar kelimeleri ayıklayan fonksiyondur.
+TranslateText() : Metni farklı bir dile çeviren fonksiyondur.
+
+--Prompt Şablonlama ve Düzgün Prompt Yönetimi
+
+Büyük dil modellerine gönderilen prompt’ların tutarlı ve sürdürülebilir olması için Semantic Kernel prompt şablonlama özelliği sunmaktadır. Bu özellik sayesinde modelin nasıl cevap vermesi, hangi bilgilerin dikkate alınması veya nasıl bir üslup kullanılması gerektiğini belirleyen şablonlar oluşturulabilmekte ve yönetilebilmektedir. 
+Tabi bunu yaparken bir yandan da uygulamanın farklı sürümleri veya ortamlarına göre prompt’ları ayırabilir ve kullanıcılardan yahut başka sistemlerden gelen verileri de şablona kolayca entegre edebilirsiniz.
+
+--Bağlam (Context) ve Memory (Bellek)
+
+Semantic Kernel, uygulamalarınızda diyaloğa veya senaryoya dayalı bir bellek/memory kavramı getirmektedir. Bir LLM ile konuşma halindeyken veya ardışık sorgular yaparken önceki adımlardan elde edilen bilgilerin saklanması ve bu bilgilerin gelecekteki sorgularda kullanılması oldukça kritik öneme sahiptir diyebiliriz. Haliyle Semantic Kernel ile ister o anki istek veya konuşma akışına göre gerekli bilgilerin saklandığı geçici belleği(Kısa Vadeli Hafıza / Short-Term Memory), isterseniz de kullanıcının geçmiş etkileşimleri, veritabanı bilgileri veya önceki sorgulardan türetilmiş sonuçlar gibi kalıcı verilerin bulunduğu uzun vadeli hafızayı(Uzun Vadeli Hafıza / Long-Term Memory) kullanabilirsiniz.
+
+--Yüksek Seviyeli Senaryo Desteği
+
+Semantic Kernel sadece temel fonksiyon çağrılarını değil, daha karmaşık senaryoların da ele alınabilmesi için çeşitli yüksek seviyeli soyutlamalar da sunmaktadır. Misal olarak; bir fonksiyonun çıktısını bir başka fonksiyonun girdisi olarak alıp işlemek (zincirleme prompt’lar – chaining), model cevabına göre farklı iş akışı adımlarını tetiklemek veya sonlandırmak gibi koşullu iş akışları ve domain’e özel senaryolarda LLM’in yanıtlarını ek mantıkla birleştirerek karar mekanizmaları oluşturmak örnek verilebilir.
+
+
+--Semantic Kernel İle ML.NET Arasındaki Fark Nedir?
+
+ML.NET, genel makine öğrenimi için tasarlanmışken, Semantic Kernel ise büyük dil modellerini ve yaratıcı AI görevlerini kullanabilmek için bir orkestrasyon sağlaması maksadıyla tasarlanmıştır.
+
