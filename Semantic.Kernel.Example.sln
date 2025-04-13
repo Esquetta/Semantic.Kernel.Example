@@ -20,6 +20,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Level2.Prompt_Templates", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Level2.Prompt_Templates", "Level2.Prompt_Templates\Level2.Prompt_Templates.csproj", "{89264822-2C99-4040-A5B3-658D51A3C982}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Level3.History_Objects", "Level3.History_Objects", "{D4BC61D5-E023-4079-A1E2-44EA9EF4FF51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Level3.History_Objects", "Level3.History_Objects\Level3.History_Objects.csproj", "{534DE556-AEBD-4F86-A515-87789F3B95A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +42,10 @@ Global
 		{89264822-2C99-4040-A5B3-658D51A3C982}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89264822-2C99-4040-A5B3-658D51A3C982}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89264822-2C99-4040-A5B3-658D51A3C982}.Release|Any CPU.Build.0 = Release|Any CPU
+		{534DE556-AEBD-4F86-A515-87789F3B95A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{534DE556-AEBD-4F86-A515-87789F3B95A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{534DE556-AEBD-4F86-A515-87789F3B95A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{534DE556-AEBD-4F86-A515-87789F3B95A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +54,7 @@ Global
 		{D123946D-C115-48DB-80FE-7459D591AD2F} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{F5B91D18-D4FB-46AC-AD2E-4C162D68FBBB} = {5909745B-AAC5-4705-8932-796A7BF753C8}
 		{89264822-2C99-4040-A5B3-658D51A3C982} = {A6CF55C9-C665-42B5-B542-2BF9C6E53C93}
+		{534DE556-AEBD-4F86-A515-87789F3B95A3} = {D4BC61D5-E023-4079-A1E2-44EA9EF4FF51}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3A6E22BE-9885-4CE2-993E-84CFB13828EB}
