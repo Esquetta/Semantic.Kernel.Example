@@ -55,3 +55,57 @@ Semantic Kernel sadece temel fonksiyon çağrılarını değil, daha karmaşık 
 
 ML.NET, genel makine öğrenimi için tasarlanmışken, Semantic Kernel ise büyük dil modellerini ve yaratıcı AI görevlerini kullanabilmek için bir orkestrasyon sağlaması maksadıyla tasarlanmıştır.
 
+
+--Prompt Şablonlarının(Templates) Kullanımı
+Semantic Kernel’daki promt şablonları, Doğal Dil İşleme (NLP) ile yapay zeka modellerini kullanarak dinamik prompt’lar oluşturmak için kullanılan bir yapıdır. Bunlar, belirli bir bağlam veya girdiye göre özelleştirilebilen şablonlardır. Yapısal olarak yer tutucular(placeholders) ve parametreler eşliğinde çalışmaktadırlar.
+
+Misal olarak aşağıda basit bir şablon yapısını inceleyebilirsiniz;
+
+Yandaki işlemi hesapla:: {{$input}}
+Burada {{$input}} ifadesi placeholder’a karşılık gelirken, parametre ise kullanıcı ya da sistem tarafından sağlanan gerçek değere karşılık gelmektedir.
+
+--History Objesi İle Geçmiş Bağlamın Hatırlanması
+
+Semantic Kernel’da History objesi, bir konuşmanın geçmişini saklamak ve modelin önceki mesajlara göre daha bağlamsal yanıtlar vermesini sağlamak için kullanılmaktadır. Bu yetenek, özellikle chat-based AI uygulamalarında geçmiş konuşmaları takip etmek için önemlidir. Yapısal olarak memory mekanizmasıyla birlikte çalışmakta ve kullanıcının önceki mesajlarını saklamaktadır. Bunun için SemanticKernal.Chat veya SemanticKernel.Memory gibi bileşenlerden yararlanmaktadır.
+
+Kullanım mantığı oldukça basittir. History nesnesi oluşturulmalı ve önceki mesajlar bu nesnede depolanmalıdır.
+
+System Messages
+Modelin davranışını yönlendirmek için kullanılan mesajlardır. Yani modelin bir rol oynamasını ve belirli kurallar çerçevesinde çalışmasını sağlamak için kullanılırlar. Haliyle bu mesajlar genellikle kullanıcılardan alınmaz ya da gösterilmezler!
+User Messages
+Kullanıcıların yazdığı mesajlardır. Model, bu mesajlara karşın yanıt üretmekten sorumludur.
+Assistant Messages
+Yapay zeka modelinin verdiği yanıtlardır.
+
+--Eklenti (Plugin) Yapılanması
+Semantic Kernel’da, eklentiler ile uygulamalara özel işlevleri içeren, Semantic Kernel’a entegre edilebilen ve doğal dil komutlarıyla çağrılabilen modüler kod parçacıkları oluşturulabilmektedir. Misal olarak, eğer uygulamanızda belirli bir hesaplama yapmak, veritabanı işlemleri gerçekleştirmek veya başka özel iş mantıklarını uygulamak isterseniz, bu işlevleri bir plugin içinde toplayarak Semantic Kernel’a ekleyebilirsiniz.
+
+Böylece uygulamanızın gereksinimlerine göre özel işlemleri modüler bir şekilde organize edebilir; okunabilirliği, test edilebilirliği ve bakımı oldukça kolay bir kod inşasında bulunabilirsiniz. Ayrıca, ihtiyaç duyulan yeni işlevleri mevcut Semantic Kernel yeteneklerine entegre ederek uygulamanızı daha esnek ve genişletilebilir hale getirebilirsiniz.
+
+
+Yukarıda görüldüğü üzere, uygulamaya özgü fonksiyonları içeren bir sınıf oluşturulmuştur. İşte bu sınıf bizler için bir plugin niteliği taşımaktadır. Sınıf içerisindeki Add metodu bu eklentinin niteliklerinden birisidir ve görüldüğü üzere bazı attribute’lar tarafından işaretlenmiştir. Bu attribute’lardan KernelFunction, işaretlediği metodu Semantic Kernel’ın tanıyabileceği bir kernel fonksiyon olarak nitelendirmemizi sağlar. Böylece SK, bu fonksiyonu, parantez içerisinde belirtilen benzersiz isimle eşleyerek çalıştırır. Description ve return: Description attribute’larının ise ne oldukları zahiren aşikardır. Biri metodun işlevini tanıtırken, diğeri ise geri dönüş değerini tanıtmaktadır.
+
+Tabi isterseniz, bu eklenti fonksiyonlarını otomatik olarak da çağırtabilir ve uygulamanın kullanıcı girdilerine daha akıllıca yanıtlar vermesini sağlayabilirsiniz. Yani, belirli eylemlere karşın açık komutları tetiklemekten ziyade, kullanıcının isteğine göre AI tarafından çağrılacak uygun eklentiler devreye sokulabilir ve böylece daha doğal bir etkileşim durumu söz konusu olabilir. Ve bir yandan da irademizce yapılan fonksiyon çağrımlarının azaltılmasını sağlayarak, sanki kesin talimat verircesine yapılan davranışlar yerine, kullanıcı deneyimlerinin daha organik bir şekilde geliştirilebilmesini sağlayabilirsiniz.
+
+
+Fonksiyonların Yapılandırma Seçenekleri
+Kullanılan AI modelinin çalışması sırasında tarafımızca oluşturulan plugin’lere nasıl erişeceğini ve bunların sürecin hangi aşamasında devreye gireceğini yapılandırabilir ve ince dokunuşlarla kontrolde bulunabilirsiniz. Özellikle gerçek zamanlı verilere ihtiyaç olduğunda dış bir API’ye istek gönderilmesi gerektiğinde plugin’leri kullanabilir veya gizlilik ya da güvenlik için işlevselliği kısıtlama gibi belirli durumlarda AI’ın yanıtlarını kendinize göre uyarlayabilirsiniz. Böylece davranışları stratejik olarak yönetebilir, uygulamanızın performansını optimize edebilirsiniz.
+
+Uygulamada oluşturup dahil ettiğiniz tüm eklentiler, varsayılan olarak kullanılabilir vaziyettedirler. Sizler, istediğinizin kullanımını sınırlayabilir ya da komple devre dışı bırakabilirsiniz.
+
+
+Filtre (Filters) Yapılandırması
+Semantic Kernel’da filtreler, AI modeline gönderilen prompt’ların çözümlenmesi sürecinde kullanıcı izinlerinden tutun loglamaya kadar birçok eylemin sıralı bir şekilde gerçekleştirilmesini sağlayan yapılardır.
+
+Bu minvalde Semantic Kernel, kontrolü ve özelleştirmeyi geliştirmek için aşağıdaki gibi üç tür filtre yapısı sunmaktadır;
+
+Function Invocation Filters
+Bir fonksiyonun her yürütülme/işlenme sürecinde tetiklenecek olan filter’dır. Böylece ilgili fonksiyonla ilgili meta verilere erişim şansı doğacak hem de ilgili fonksiyon yürütülmeden önce ve sonra log atma imkanı söz konusu olacaktır.
+
+
+Prompt Render Filters
+Prompt oluşturma sırasında tetiklenen ve prompt’ların nasıl biçimlendirileceği ve AI’ya nasıl gönderileceği üzerinde kontrol fırsatı sağlayan filter’dır. Özellikle hassas bilgiler için prompt’u değiştirme/düzenleme veya semantic caching’i etkinleştirme gibi görevler için oldukça ideal fırsatlar sağlamaktadır.
+
+
+Auto Function Invocation Filters
+Bu filter’da yalnızca otomatik fonksiyon çağırma işlemi sırasında tetiklenmektedir. Genellikle ara sonuçlara göre iş akışlarını ayarlamak ya da mevcut süreci sonlandırmak için kullanılmaktadır
