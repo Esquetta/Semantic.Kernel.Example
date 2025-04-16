@@ -32,6 +32,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Level5.PluginConfiguration"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Level5.PluginConfiguration", "Level5.PluginConfiguration\Level5.PluginConfiguration.csproj", "{D5D5C321-5EFA-4789-8BC5-D1061555C2E5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Level6.Filters", "Level6.Filters", "{2C86231D-503B-4168-8BB0-B5A7EE7FAA9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Level6.Filters", "Level6.Filters\Level6.Filters.csproj", "{9D66DCFE-90EF-4647-94D6-AD77E5BF33FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +66,10 @@ Global
 		{D5D5C321-5EFA-4789-8BC5-D1061555C2E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5D5C321-5EFA-4789-8BC5-D1061555C2E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5D5C321-5EFA-4789-8BC5-D1061555C2E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D66DCFE-90EF-4647-94D6-AD77E5BF33FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D66DCFE-90EF-4647-94D6-AD77E5BF33FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D66DCFE-90EF-4647-94D6-AD77E5BF33FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D66DCFE-90EF-4647-94D6-AD77E5BF33FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +81,7 @@ Global
 		{534DE556-AEBD-4F86-A515-87789F3B95A3} = {D4BC61D5-E023-4079-A1E2-44EA9EF4FF51}
 		{28459060-8F09-4EA5-80D1-E60C6A1C6FD8} = {2A42F233-F211-4E28-87DD-BFF85A62AA4F}
 		{D5D5C321-5EFA-4789-8BC5-D1061555C2E5} = {8ADC0642-E0AD-4D6F-B536-182D3408A1E7}
+		{9D66DCFE-90EF-4647-94D6-AD77E5BF33FF} = {2C86231D-503B-4168-8BB0-B5A7EE7FAA9D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3A6E22BE-9885-4CE2-993E-84CFB13828EB}
